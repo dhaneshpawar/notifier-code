@@ -1,0 +1,19 @@
+{
+  "name": "notifier-code",
+  "version": "1.0.0",
+  "description": "notification application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhaneshpawar/notifier-code.git"
+  },
+  "author": "Dhanesh and Ganesh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dhaneshpawar/notifier-code/issues"
+  },
+  "homepage": "https://github.com/dhaneshpawar/notifier-code#readme"
+}
