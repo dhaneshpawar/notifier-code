@@ -16,5 +16,7 @@
     "url": "https://github.com/dhaneshpawar/notifier-code/issues"
   },
   "homepage": "https://github.com/dhaneshpawar/notifier-code#readme",
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
