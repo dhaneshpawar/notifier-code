@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/dhaneshpawar/notifier-code/issues"
   },
-  "homepage": "https://github.com/dhaneshpawar/notifier-code#readme"
+  "homepage": "https://github.com/dhaneshpawar/notifier-code#readme",
+  "dependencies": {}
 }
