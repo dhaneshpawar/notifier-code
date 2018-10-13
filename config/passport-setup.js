@@ -14,6 +14,7 @@ passport.use(
     },(req,accessToken,refreshToken,profile,done)=>{
         //passpot callback function
         console.log('passport callback function fired');
+        
         console.log(" profile familyName = "+profile.name.familyName);
         console.log(" profile givenName = "+profile.name.givenName);
         console.log("gmail : "+profile.emails[0].value);
