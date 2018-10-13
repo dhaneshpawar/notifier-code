@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!---------- Code for logo started ---------->
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="icon" sizes="192x192" href="images/logo.png">
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Nestimatic</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--Styles -->
+        <link rel="stylesheet" type="text/css" media="screen" href="styles/info.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="styles/inputfieldofprofile.css" />
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" media="screen" href="styles/net-connection.css"/>
+   </head>
+    <body>
+        <p>your gmail is = <%= data.gmail %></p>
+        <p>your name is = <%= data.name %></p>
+
+        <p>your profile = </p>
+        <img src="<%= data.url %>" alt=""> <br> <br>
+        <a href="/signout"><button>sign out</button> </a>
+     </body>
+</html>
