@@ -32,14 +32,15 @@ router.get('/google/redirect',passport.authenticate('google'),(req,res)=>
     
     var sendingmaildata = {
       gmail :  req.user.emails[0].value,
-      name:   req.user.displayName,
-      url: req.user.photos[0].value
+      familyName : req.user.name.familyName,
+      givanName : req.user.name.givenName,
+      fullname : req.user.displayName,
+      url : req.user.photos[0].value,
+
     }
    
 
-    usergmail = req.user;
-    console.log();
-    console.log("Logged in user = " + usergmail);
+    console.log("Logged in user = " + req.user.emails[0].value);
 
     res.render("info",{data: sendingmaildata});
  
