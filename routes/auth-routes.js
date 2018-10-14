@@ -5,6 +5,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+//MongoDB 
+var mongoose = require('mongoose');
+
+//requiring users databse controller
+var userModel = require('../controllers/database-controllers/users-database-controller');
+
 const router = require("express").Router();
 const passport = require('passport');
 
@@ -30,19 +36,66 @@ router.get('/google/redirect',passport.authenticate('google'),(req,res)=>
     console.log("Display Name : "+req.user.displayName);
     console.log("photos : "+req.user.photos[0].value);
     
-    var sendingmaildata = {
-      gmail :  req.user.emails[0].value,
-      familyName : req.user.name.familyName,
-      givanName : req.user.name.givenName,
-      fullname : req.user.displayName,
-      url : req.user.photos[0].value,
+    //cheking user already exits or not 
+        //find gmail
+        userModel.find({gmail: req.user.emails[0].value}, function (err,data) 
+        {
+          if (err) throw err;
+    
+          //if gmail is not in database
+          if(data == "")
+          {
 
-    }
-   
+            var sendingmaildata = {
+              gmail :  req.user.emails[0].value,
+              familyName : req.user.name.familyName,
+              givanName : req.user.name.givenName,
+              fullname : req.user.displayName,
+              url : req.user.photos[0].value,
+              exits: "no"
+            }
+        
+             //inserting user data
+             var insertUser = userModel({
+              _id : 2,
+             gmail: req.user.emails[0].value, 
+             firstname: req.user.name.givenName, 
+              lastname: req.user.name.familyName, 
+              fullname : req.user.displayName,
+              profileimageurl: req.user.photos[0].value}).save(function (error)
+             {
+               if (error) throw error;
+               console.log("*******----------- new user gmail saved --------------***************");
 
-    console.log("Logged in user = " + req.user.emails[0].value);
+               console.log("Logged in user = " + req.user.emails[0].value);
 
-    res.render("info",{data: sendingmaildata});
+               res.render("info",{data: sendingmaildata});
+           
+             });
+
+          }
+          else
+          {
+        
+            console.log("user Already exits");
+
+            var sendingmaildata = {
+              gmail :  req.user.emails[0].value,
+              familyName : req.user.name.familyName,
+              givanName : req.user.name.givenName,
+              fullname : req.user.displayName,
+              url : req.user.photos[0].value,
+              exits: "yes"
+            }
+
+            console.log("Logged in user = " + req.user.emails[0].value);
+
+            res.render("info",{data: sendingmaildata});
+
+          }      
+        });
+       
+
  
     /*     
     //find gmail

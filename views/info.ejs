@@ -15,6 +15,15 @@
         <link rel="stylesheet" type="text/css" media="screen" href="styles/net-connection.css"/>
    </head>
     <body>
+        <% if (data.exits == 'yes')
+          {%>
+         <p>your already signed in , here is your data....</p>
+        <%  }  
+        else
+        {%>
+<p>your new to notifier , welcome to notifier....</p>
+       <% }
+        %>
         <p>your gmail is = <%= data.gmail %></p>
         <p>your name is = <%= data.givanName %></p>
         <p>your surname is = <%= data.familyName %></p>
